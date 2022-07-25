@@ -1,8 +1,14 @@
-// require path
-// rquire router from express - activity 21 and 22, specifically in the routes in activity 22
+const path = require('path');
+const router = require('express').Router();
 
-// set up a route for /notes that responds with the notes.html file
+// Since we have a two-page application, the expected behavior is for /notes to open the notes.html
+// For all other requests, the user will be on the index.html homepage
+router.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/notes.html'))
+});
 
-// for any other routes, using * as the path, you can respond with the index.html file
+router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+})
 
-// module.exports = router;
+module.exports = router;
