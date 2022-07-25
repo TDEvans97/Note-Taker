@@ -7,11 +7,11 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 class Store {
   read() {
-    return readFileAsync("db/db.json", "utf8");
+    return readFileAsync("./db/db.json", "utf8");
   }
 
   write(note) {
-    return writeFileAsync("db/db.json", JSON.stringify(note));
+    return writeFileAsync("./db/db.json", JSON.stringify(note));
   }
 
   getNotes() {
@@ -47,11 +47,10 @@ class Store {
           notes.splice(i, 1)
           return notes;
         }
-        return console.error(err);
       }
       // After removing the note from the array object, overwrite db.json with the updated data.
     }).then((updatedDatabase) => {
-      this.write(updatedDatabase)
+      this.write(updatedDatabase);
     });
     return;
   }

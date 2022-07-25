@@ -17,7 +17,8 @@ api.post("/notes", (req, res) => {
   store.addNote(req.body);
   res.json(req.body);
   //Signal the user that their post request has been calculated.
-  return alert("New note has been added!");
+  console.log("New note has been added!");
+  return;
 });
 
 // Delete a note from the page
@@ -25,7 +26,7 @@ api.delete("/notes/:id", (req, res) => {
   console.log(`${req.method} for /api/notes`);
   // removeNote will return an err if no id match exists
   store.removeNote(req.params.id);
-  res.alert("The note has been deleted!");
+  res.console.log("The note has been deleted!");
 });
 
 module.exports = api;
