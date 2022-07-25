@@ -8,6 +8,7 @@ const port = process.env.port || 80;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+// app.use(express.static("pages"));
 app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
 
