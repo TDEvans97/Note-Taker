@@ -26,7 +26,9 @@ api.delete("/notes/:id", (req, res) => {
   console.log(`${req.method} for /api/notes`);
   // removeNote will return an err if no id match exists
   store.removeNote(req.params.id);
-  res.console.log("The note has been deleted!");
+  res.json();
+  console.log("The note has been deleted!");
+  return;
 });
 
 module.exports = api;
